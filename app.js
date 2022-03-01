@@ -1,9 +1,13 @@
 //Creating a simple server in Node.js
 
 const http = require('http')
-// const routes = require('./routes.js')
-// const routes = require('./assignment1.js')
 
-const server = http.createServer()
+const express = require('express')
+
+const app = express()
+
+app.use((req, res, next) => {})
+
+const server = http.createServer(app)
 
 server.listen(3000)
