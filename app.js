@@ -6,12 +6,16 @@ const express = require('express')
 
 const app = express()
 
-app.use((req, res, next) => {
-    console.log('In the middleware!')
-    next()// Allows the request to continue to the next middleware in line
+app.use('/',(req,res,next) =>{
+    console.log('all')
+    next()
+})
+app.use('/add',(req, res, next) => {
+    console.log('Add`')
+    res.send('<h1>Add</h1>')
 })
 
-app.use((req, res, next) => {
+app.use('/',(req, res, next) => {
     console.log('In the other middleware!')
     res.send('<h1>Hello from Express!</h1>')
 })
