@@ -3,21 +3,19 @@
 const http = require('http')
 
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const app = express()
 
-app.use('/',(req,res,next) =>{
-    console.log('all')
-    next()
-})
-app.use('/add',(req, res, next) => {
-    console.log('Add`')
-    res.send('<h1>Add</h1>')
-})
+const adminRoutes = require('./routes/admin')
+const shopRoutes = require('./routes/shop')
 
-app.use('/',(req, res, next) => {
-    console.log('In the other middleware!')
-    res.send('<h1>Hello from Express!</h1>')
-})
+
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(adminRoutes)
+app.use(shopRoutes)
+
+
 
 app.listen(3000)
