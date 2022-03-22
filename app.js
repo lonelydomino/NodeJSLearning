@@ -9,8 +9,8 @@ const app = express()
 
 const adminRoutes = require('./routes/admin')
 const shopRoutes = require('./routes/shop')
-const req = require('express/lib/request')
 
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(bodyParser.urlencoded({extended: false}))
 
