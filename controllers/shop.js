@@ -1,4 +1,5 @@
 
+const { redirect } = require('express/lib/response')
 const Product = require('../models/product')
 
 
@@ -11,6 +12,14 @@ const Product = require('../models/product')
             path: '/products'
           })
       })
+  }
+
+  exports.getProduct =(req,res, next) => {
+    const productId = req.params.productId
+    Product.findById(productId, product => {
+      console.log(product)
+    })
+    res.redirect('/')
   }
 
   exports.getIndex = (req, res, next) => {
